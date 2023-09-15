@@ -3,7 +3,7 @@ Boot.dev maze solver project
 
 We use Tkinter, a Python 3 library, to open a graphical window with a blank canvas that the program will draw on.
 
-Run python -m tkinter from command line to open a window demonstrating the interface.
+Run python -m tkinter from command line to open a window demonstrating the interface and see if it's installed
 
 Install pyenv with webi: curl -sS https://webi.sh/pyenv | sh
 
@@ -21,3 +21,18 @@ check python and python3 --version
 
 brew list - to see modules installed with homebrew
 brew install python-tk@3.9 - to install tkinter
+
+
+pyenv versions
+pyenv uninstall 3.11
+which python
+
+
+On MacOS:
+xcode-select --install -> installs git
+git version
+
+Using webi to install GitHub CLI:
+curl -sS https://webi.sh/gh | sh
+
+Ended up downloading Python from python.org because I couldn't get tkinter to work with pyenv. Had to download a python extension for VS Code as well.

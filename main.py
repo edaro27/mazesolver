@@ -1,61 +1,14 @@
-from tkinter import Tk, BOTH, Canvas
-
-class Window:
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
-        self.__root = Tk()
-        self.__root.title("Maze solver")
-        self.__canvas = Canvas(self.__root, width = self.width, height = self.height, bg = "white")
-        self.__canvas.pack(fill=BOTH, expand=1)
-        self.__running = False
-        self.__root.protocol("WM_DELETE_WINDOW", self.close)
-
-    def redraw(self):
-        self.__root.update_idletasks()
-        self.__root.update()
-    
-    def wait_for_close(self):
-        self.__running = True
-        while self.__running:
-            self.redraw()
-        print("window closed...")
-
-    def close(self):
-        self.__running = False
-
-    def draw_line(self, x1, y1, x2, y2, fill_color):
-        self.x1 = x1
-        self.y1 = y1
-        self.x2 = x2
-        self.y2 = y2
-        self.fill_color = fill_color
-        line = Line(self.x1, self.y1, self.x2, self.y2)
-        line.draw(self.__canvas, self.fill_color)
-
-class Point:
-    x = 0
-    y = 0
-
-class Line:
-    def __init__(self, x1, y1, x2, y2):
-        self.x1 = x1
-        self.y1 = y1
-        self.x2 = x2
-        self.y2 = y2
-
-    def draw(self, canvas, fill_color):
-        print(self.x1, self.y1, self.x2, self.y2)
-        canvas.create_line(
-            self.x1, self.y1, self.x2, self.y2, fill = fill_color, width = 5
-        )
-        canvas.pack()
+from graphics import Window, Point, Line, Cell
 
 def main():
     win = Window(500,500)
+    # l = Line(Point(50,50),Point(400,400))
+    # c1 = Cell(True, True, True, True, 5, 50, 5, 50, True)
+    c2 = Cell(True, True, True, True, 20, 40, 100, 120, True)
+    c3 = Cell(True, True, True, True, 40, 60, 120, 140, True)
     print("running")
-    win.draw_line(2,2,400,400, "white")
-    win.draw_line(52,35,188,399, "white")
+    win.draw_cline(c2, "black")
+    win.draw_cline(c3, "red")
     win.wait_for_close()
 
 main()
